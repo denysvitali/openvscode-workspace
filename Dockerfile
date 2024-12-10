@@ -12,7 +12,7 @@ RUN apt-get update && \
     else \
         echo "Unsupported architecture"; exit 1; \
     fi && \
-    wget -s https://golang.org/dl/go${GO_VERSION}.linux-${ARCH}.tar.gz && \
+    wget -q https://golang.org/dl/go${GO_VERSION}.linux-${ARCH}.tar.gz && \
     tar -C /usr/local -xzf go${GO_VERSION}.linux-${ARCH}.tar.gz && \
     rm go${GO_VERSION}.linux-${ARCH}.tar.gz && \
     apt-get clean && \
