@@ -29,11 +29,4 @@ RUN mkdir -p /usr/lib/code && ln -s /home/openvscode-server/product.json /usr/li
 RUN git clone https://aur.archlinux.org/code-features.git /usr/share/code-features && \
     cd /usr/share/code-features && \
     python3 patch.py code-features patch
-RUN if [ "$(uname -m)" = "x86_64" ]; then \
-        ARCH="x64"; \
-    elif [ "$(uname -m)" = "aarch64" ]; then \
-        ARCH="arm64"; \
-    else \
-        echo "Unsupported architecture"; exit 1; \
-    fi && yarn gulp vscode-reh-web-linux-$ARCH-min
 USER openvscode-server
