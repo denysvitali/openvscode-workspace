@@ -25,7 +25,7 @@ RUN apt-get update && \
 # Set Go environment variables
 ENV PATH="/usr/local/go/bin:${PATH}"
 
-RUN mkdir -p /usr/lib/code && ln -s /home/openvscode-server/product.json /usr/lib/code/product.json
+RUN mkdir -p /usr/lib/code && ln -s /home/.openvscode-server/product.json /usr/lib/code/product.json
 RUN git clone https://aur.archlinux.org/code-features.git /usr/share/code-features && \
     cd /usr/share/code-features && \
     python3 patch.py code-features patch
