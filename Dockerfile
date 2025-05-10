@@ -29,6 +29,6 @@ RUN mkdir -p /usr/lib/code && ln -s /home/.openvscode-server/product.json /usr/l
 RUN cd /tmp && \
     wget https://raw.githubusercontent.com/chaotic-aur/packages/f24e806443dc47afe006f1eef6b011fcb9af33c9/vscodium-marketplace/patch.py && \
     sed -E 's@PRODUCT_JSON_LOCATION = .*@PRODUCT_JSON_LOCATION = "/usr/lib/code/product.json"@g' patch.py && \
-    python patch.py && \
+    python3 patch.py && \
     cat /usr/lib/code/product.json
 USER openvscode-server
