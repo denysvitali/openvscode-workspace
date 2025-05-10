@@ -26,7 +26,7 @@ RUN apt-get update && \
 ENV PATH="/usr/local/go/bin:${PATH}"
 
 RUN mkdir -p /usr/lib/code && ln -s /home/.openvscode-server/product.json /usr/lib/code/product.json
-RUN git clone https://aur.archlinux.org/code-features.git /usr/share/code-features && \
-    cd /usr/share/code-features && \
-    python3 patch.py code-features patch -s
+RUN cd /tmp && \
+    wget https://raw.githubusercontent.com/chaotic-aur/packages/f24e806443dc47afe006f1eef6b011fcb9af33c9/vscodium-marketplace/patch.py && \
+    sed -E 's@PRODUCT_JSON_LOCATION = .*@PRODUCT_JSON_LOCATION = "/usr/lib/code/product.json"@g'
 USER openvscode-server
